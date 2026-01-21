@@ -167,44 +167,44 @@ cab-booking-system/
 │   ├── sequence/
 │   └── deployment/
 │
-├── gateway-service/          # VM1
+├── gateway-service/          # VM1 - API Gateway
 │   ├── src/
 │   │   ├── index.js
 │   │   ├── routes.js
 │   │   └── auth.middleware.js
 │   └── Dockerfile
 │
-├── auth-service/             # VM1
+├── auth-service/             # VM1 - Authentication
 │   ├── src/
 │   │   ├── auth.controller.js
 │   │   ├── auth.service.js
 │   │   └── jwt.util.js
 │   └── Dockerfile
 │
-├── booking-service/          # VM2
+├── booking-service/          # VM2 - Booking Management
 │   ├── src/
 │   │   ├── booking.controller.js
 │   │   ├── booking.service.js
 │   │   └── booking.model.js
 │   └── Dockerfile
 │
-├── driver-service/           # VM3
+├── driver-service/           # VM3 - Driver & Matching
 │   ├── src/
 │   │   ├── driver.controller.js
 │   │   └── matching.service.js
 │   └── Dockerfile
 │
-├── trip-service/             # VM5
+├── trip-service/             # VM5 - Trip & Real-time
 │   ├── src/
 │   │   ├── trip.controller.js
 │   │   ├── trip.service.js
 │   │   └── websocket.js
 │   └── Dockerfile
 │
-├── message-broker/           # VM4
+├── message-broker/           # VM4 - Kafka / RabbitMQ
 │   └── docker-compose.yml
 │
-├── frontend/                 # React
+├── frontend/                 # React + Tailwind
 │   ├── src/
 │   └── tailwind.config.js
 │
