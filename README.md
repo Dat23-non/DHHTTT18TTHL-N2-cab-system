@@ -160,26 +160,53 @@ Although the MVP is lightweight, the system reflects **Big Data design principle
 
 ## 📁 Project Structure
 
-taxi-booking-system/
-├── docs/                    # Tài liệu phân tích & thiết kế
-├── frontend/                # Ứng dụng client (Customer / Driver / Admin)
-├── api-gateway/             # API Gateway (Node.js)
-├── services/                # Các microservices backend
-│   ├── auth-service/        # Xác thực & phân quyền
-│   ├── user-service/        # Quản lý người dùng
-│   ├── driver-service/      # Quản lý tài xế
-│   ├── booking-service/     # Đặt xe
-│   ├── ride-service/        # Quản lý chuyến đi
-│   ├── payment-service/     # Thanh toán
-│   ├── pricing-service/     # Tính giá
-│   └── notification-service/# Thông báo
-|   |__ review-service/      # Danh gia
-├── events/                  # Kafka / RabbitMQ (event-driven)
-├── database/                # Cấu hình database
-├── libs/                    # Thư viện dùng chung
-├── observability/           # Monitoring & Logging
-├── security/                # Zero Trust, RBAC, mTLS
-├── infra/                   # Terraform, Kubernetes
-├── scripts/                 # Script hỗ trợ
+cab-booking-system/
+├── docs/ # Documentation
+│ ├── architecture/
+│ ├── sequence/
+│ └── deployment/
+│
+├── gateway-service/ # VM1 - API Gateway
+│ ├── src/
+│ │ ├── index.js
+│ │ ├── routes.js
+│ │ └── auth.middleware.js
+│ └── Dockerfile
+│
+├── auth-service/ # VM1 - Authentication
+│ ├── src/
+│ │ ├── auth.controller.js
+│ │ ├── auth.service.js
+│ │ └── jwt.util.js
+│ └── Dockerfile
+│
+├── booking-service/ # VM2 - Booking
+│ ├── src/
+│ │ ├── booking.controller.js
+│ │ ├── booking.service.js
+│ │ └── booking.model.js
+│ └── Dockerfile
+│
+├── driver-service/ # VM3 - Driver & Matching
+│ ├── src/
+│ │ ├── driver.controller.js
+│ │ └── matching.service.js
+│ └── Dockerfile
+│
+├── trip-service/ # VM5 - Trip & Realtime
+│ ├── src/
+│ │ ├── trip.controller.js
+│ │ ├── trip.service.js
+│ │ └── websocket.js
+│ └── Dockerfile
+│
+├── message-broker/ # VM4 - Kafka / RabbitMQ
+│ └── docker-compose.yml
+│
+├── frontend/ # React Client
+│ ├── src/
+│ └── tailwind.config.js
+│
+└── docker-compose.yml # Local MVP Demo
 ├── docker-compose.yml       # Chạy local
 └── README.md
